@@ -1,0 +1,11 @@
+// dataflow 1.2.0.RELEASE log opened at 2018-01-10 10:44:25
+// dataflow 1.2.0.RELEASE log opened at 2018-01-10 10:47:17
+// dataflow 1.2.0.RELEASE log opened at 2018-01-10 10:48:55
+// dataflow 1.2.0.RELEASE log opened at 2018-01-10 10:52:19
+// dataflow 1.2.0.RELEASE log opened at 2018-01-10 10:53:07
+// dataflow 1.2.0.RELEASE log opened at 2018-01-10 10:54:07
+// dataflow 1.2.0.RELEASE log opened at 2018-01-10 10:57:18
+// [failed] app import --uri http://bit.ly/stream-applications-kafka-maven
+// [failed] app import --uri http://bit.ly/stream-applications-kafka-maven
+app import --uri http://bit.ly/stream-applications-kafka-maven
+// dataflow 1.2.0.RELEASE log opened at 2018-01-12 15:29:50
