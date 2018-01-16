@@ -1,0 +1,8 @@
+app register --name file-connector --type source --uri maven://org.springframework.cloud.stream.app:file-connector:jar:0.0.1-SNAPSHOT
+ 
+app register --name tika-extractor --type processor --uri maven://org.springframework.boot:tika-extractor:jar:1.0.0-SNAPSHOT
+ 
+#app register --name logging-sink --type sink 
+#  --uri maven://org.baeldung.spring.cloud:spring-data-flow-logging-sink:jar:1.0.0-SNAPSHOT
+
+stream create --name file-to-log --definition 'file-connector | tika-extractor | log'
