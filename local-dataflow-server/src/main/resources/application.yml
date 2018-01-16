@@ -42,32 +42,12 @@ info:
 # server address, e.g. in eureka.client.serviceUrl.defaultZone
 #
 #---
-spring:
-  application:
-    name: "@project.artifactId@"
-  cloud:
-    config:
-      enabled: false
-      discovery:
-           enabled: true
-# tag::configuration-eureka[]
-eureka:  #<1>
-  instance:
-    leaseRenewalIntervalInSeconds: 10
-  client:
-    registryFetchIntervalSeconds: 5
-    serviceUrl:
-      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8761}/eureka/
-
-management.security.enabled: false  #<2>
-# end::configuration-eureka[]
-
-# tag::configuration-ui-hystrix[]
-spring.boot.admin.routes.endpoints: env,metrics,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,hystrix.stream
-# end::configuration-ui-hystrix[]
-
-# tag::configuration-ui-turbine[]
-spring.boot.admin.turbine:
-  clusters: default
-  location: turbine  #<1>
-# end::configuration-ui-turbine[]
+#spring:
+#  cloud:
+#     config:
+#        discovery:
+#           enabled: true
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/

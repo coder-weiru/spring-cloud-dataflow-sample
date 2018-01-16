@@ -17,12 +17,8 @@
 package org.springframework.cloud.dataflow.server.local;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.dataflow.server.EnableDataFlowServer;
-
-import de.codecentric.boot.admin.config.EnableAdminServer;
 
 /**
  * Bootstrap class for the local Spring Cloud Data Flow Server.
@@ -33,13 +29,9 @@ import de.codecentric.boot.admin.config.EnableAdminServer;
  */
 @SpringBootApplication
 @EnableDataFlowServer
-@EnableAutoConfiguration
-@EnableDiscoveryClient
-@EnableAdminServer
 public class LocalDataFlowServer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(LocalDataFlowServer.class, args);
 	}
 }
-
