@@ -25,10 +25,10 @@ public class OpenCalaisExtractionProcessor {
 	}
 
     @Transformer(inputChannel = Processor.INPUT, outputChannel = Processor.OUTPUT)
-	public Message<Document> transform(String payload) throws ParseException {
+	public Message<String> transform(String payload) throws ParseException {
         logger.debug("Transforming payload: " + payload.toString());
 
-		Document document = httpClientCalaisPost.postForDocument(payload);
+		String document = httpClientCalaisPost.postForDocument(payload);
 
 		logger.debug("OpenCalaisExtractionProcessor transformed result: " + document);
 		return MessageBuilder.withPayload(document).build();

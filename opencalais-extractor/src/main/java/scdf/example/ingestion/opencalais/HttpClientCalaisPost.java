@@ -40,9 +40,8 @@ public class HttpClientCalaisPost {
 		return method;
 	}
 
-	public Document postForDocument(String input) {
+	public String postForDocument(String input) {
 		PostMethod method = null;
-		Document document = null;
 		try {
 			method = createPostMethod();
 			method.setRequestEntity(new StringRequestEntity(input, "text/raw", "UTF-8"));
@@ -53,8 +52,7 @@ public class HttpClientCalaisPost {
 				method.getResponseBodyAsString();
 			} else if (returnCode == HttpStatus.SC_OK) {
 				System.out.println("InputStream post succeeded. " + input);
-				document = new Document();
-
+				
 				StringWriter writer = null;
 				try {
 					BufferedReader reader = new BufferedReader(
@@ -65,7 +63,7 @@ public class HttpClientCalaisPost {
 						writer.write(line);
 					}
 
-					document.setContent(writer.toString());
+					return writer.toString();
 				} catch (IOException e) {
 					e.printStackTrace();
 				} finally {
@@ -90,7 +88,7 @@ public class HttpClientCalaisPost {
 			}
 		}
 
-		return document;
+		return "{ \"error\": \"Incorrect reponse returned from OpenCalais\"}";
 	}
 
 }

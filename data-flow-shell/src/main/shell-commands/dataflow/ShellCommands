@@ -1,9 +1,13 @@
 app import --uri http://bit.ly/Bacon-RELEASE-stream-applications-kafka-10-maven
 app register --name file-connector --type source --uri maven://org.springframework.cloud.stream.app:file-connector:jar:0.0.1-SNAPSHOT
 app register --name tika-extractor --type processor --uri maven://org.springframework.boot:tika-extractor:jar:1.0.0-SNAPSHOT
+app register --name opencalais-extractor --type processor --uri maven://org.springframework.boot:opencalais-extractor:jar:0.0.1-SNAPSHOT
  
 #app register --name logging-sink --type sink 
 #  --uri maven://org.baeldung.spring.cloud:spring-data-flow-logging-sink:jar:1.0.0-SNAPSHOT
 
-stream create --name file-to-log --definition 'file-connector | tika-extractor | log'
-stream deploy --name file-to-log
+#stream create --name file-to-log --definition 'file-connector | tika-extractor | log'
+#stream deploy --name file-to-log
+
+stream create opencalais-stream --definition "http --port=10101 --spring.cloud.stream.bindings.output.contentType='text/plain' | opencalais-extractor  --spring.cloud.stream.bindings.input.contentType='text/plain' | log" --deploy
+stream deploy --name opencalais-stream
