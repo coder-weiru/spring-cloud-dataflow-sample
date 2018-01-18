@@ -4,5 +4,5 @@
     <logger name="org.springframework.cloud" level="DEBUG"/>
     <logger name="org.springframework.integration" level="DEBUG"/>
     <logger name="org.springframework.boot" level="DEBUG"/>
-    <logger name="scdf.example.ingestion.tika" level="DEBUG"/>
+    <logger name="scdf.example.ingestion.opencalais" level="DEBUG"/>
 </configuration>
