@@ -3,6 +3,8 @@ package scdf.example.ingestion.sink.marklogic;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.UUID;
 
 import org.springframework.expression.Expression;
@@ -82,6 +84,8 @@ public class MarkLogicStoringMessageHandler extends AbstractMessageHandler {
 		Object payload = message.getPayload();
 		String payloadAsString = (String)payload;
 		InputStream stream = new ByteArrayInputStream(payloadAsString.getBytes(StandardCharsets.UTF_8.name()));
-		this.documentService.add(UUID.randomUUID().toString(), stream, "SCDF_DOC");
+		String id = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Timestamp(System.currentTimeMillis())) + "_"
+				+ UUID.randomUUID().toString();
+		this.documentService.add(id, stream, "SCDF_DOC");
 	}
 }

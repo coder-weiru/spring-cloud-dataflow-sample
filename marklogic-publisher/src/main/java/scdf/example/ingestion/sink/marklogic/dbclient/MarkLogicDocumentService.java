@@ -25,7 +25,7 @@ public class MarkLogicDocumentService extends MarkLogicBaseService implements Do
 	private final Logger logger = LoggerFactory.getLogger(MarkLogicDocumentService.class);
 
 	private static String uriFromId(String collection, String id) {
-		return collection + "/" + id + ".xml";
+		return collection + "_" + id + ".xml";
 	}
 
 	@Override

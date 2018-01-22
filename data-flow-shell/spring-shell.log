@@ -9,3 +9,15 @@
 // [failed] app import --uri http://bit.ly/stream-applications-kafka-maven
 app import --uri http://bit.ly/stream-applications-kafka-maven
 // dataflow 1.2.0.RELEASE log opened at 2018-01-12 15:29:50
+// dataflow 1.2.0.RELEASE log opened at 2018-01-22 09:46:05
+app import --uri http://bit.ly/Bacon-RELEASE-stream-applications-kafka-10-maven
+app register --name file-connector --type source --uri maven://org.springframework.cloud.stream.app:file-connector:jar:0.0.1-SNAPSHOT
+app register --name tika-extractor --type processor --uri maven://org.springframework.boot:tika-extractor:jar:1.0.0-SNAPSHOT
+app register --name opencalais-extractor --type processor --uri maven://org.springframework.boot:opencalais-extractor:jar:0.0.1-SNAPSHOT
+app register --name marklogic-publisher --type sink --uri maven://org.springframework.boot:marklogic-publisher:jar:0.0.1-SNAPSHOT
+stream create opencalais-stream --definition "http --port=10101 --spring.cloud.stream.bindings.output.contentType='text/plain' | opencalais-extractor  --spring.cloud.stream.bindings.input.contentType='text/plain' | marklogic-publisher" --deploy
+// [failed] stream create opencalais-stream --definition "http --port=10101 --spring.cloud.stream.bindings.output.contentType='text/plain' | opencalais-extractor  --spring.cloud.stream.bindings.input.contentType='text/plain' | marklogic-publisher :opencalais-stream.opencalais-extractor > log " --deploy
+stream create opencalais-stream --definition "http --port=10101 --spring.cloud.stream.bindings.output.contentType='text/plain' | opencalais-extractor  --spring.cloud.stream.bindings.input.contentType='text/plain' | marklogic-publisher" --deploy
+stream create opencalais-stream --definition "http --port=10101 --spring.cloud.stream.bindings.output.contentType='text/plain' | opencalais-extractor  --spring.cloud.stream.bindings.input.contentType='text/plain' | marklogic-publisher" --deploy
+stream create opencalais-stream --definition "http --port=10101 --spring.cloud.stream.bindings.output.contentType='text/plain' | opencalais-extractor  --spring.cloud.stream.bindings.input.contentType='text/plain' | marklogic-publisher" --deploy
+stream create opencalais-stream --definition "http --port=10101 --spring.cloud.stream.bindings.output.contentType='text/plain' | opencalais-extractor  --spring.cloud.stream.bindings.input.contentType='text/plain' | marklogic-publisher" --deploy
