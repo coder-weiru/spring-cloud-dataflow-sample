@@ -21,3 +21,9 @@ stream create opencalais-stream --definition "http --port=10101 --spring.cloud.s
 stream create opencalais-stream --definition "http --port=10101 --spring.cloud.stream.bindings.output.contentType='text/plain' | opencalais-extractor  --spring.cloud.stream.bindings.input.contentType='text/plain' | marklogic-publisher" --deploy
 stream create opencalais-stream --definition "http --port=10101 --spring.cloud.stream.bindings.output.contentType='text/plain' | opencalais-extractor  --spring.cloud.stream.bindings.input.contentType='text/plain' | marklogic-publisher" --deploy
 stream create opencalais-stream --definition "http --port=10101 --spring.cloud.stream.bindings.output.contentType='text/plain' | opencalais-extractor  --spring.cloud.stream.bindings.input.contentType='text/plain' | marklogic-publisher" --deploy
+app import --uri http://bit.ly/Bacon-RELEASE-stream-applications-kafka-10-maven
+app register --name opencalais-extractor --type processor --uri maven://org.springframework.boot:opencalais-extractor:jar:0.0.1-SNAPSHOT
+app register --name marklogic-publisher --type sink --uri maven://org.springframework.boot:marklogic-publisher:jar:0.0.1-SNAPSHOT
+stream create opencalais-stream --definition "http --port=10101 --spring.cloud.stream.bindings.output.contentType='text/plain' | opencalais-extractor  --spring.cloud.stream.bindings.input.contentType='text/plain' | marklogic-publisher" --deploy
+stream create log-stream --definition ":opencalais-stream.opencalais-extractor > log" --deploy
+// dataflow 1.2.0.RELEASE log opened at 2018-02-08 09:43:02
